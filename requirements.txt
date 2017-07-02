@@ -58,7 +58,7 @@ pytz==2013.7
 requests==2.18.1
 requests-toolbelt==0.8.0
 scipy==0.13.0b1
-six==1.4.1
+six==1.10.0
 urllib3==1.21.1
 virtualenv==15.1.0
 Werkzeug==0.12.2
