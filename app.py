@@ -1,6 +1,7 @@
 import os,sys
 from flask import Flask,request
 from pymessenger import Bot
+from chat_ai import wit_response
 
 app = Flask(__name__)
 
@@ -36,6 +37,10 @@ def webhook():
 						messaging_text = messaging_event['message']['text']
 					else:
 						messaging_text = 'no text'
+
+					response = None
+					entity,value  = wit_response(messaging_text)
+					response = entity+" : "+value
 
 					# Echo
 					response = messaging_text
