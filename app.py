@@ -43,7 +43,6 @@ def webhook():
 					response = entity+" : "+value
 
 					# Echo
-					response = messaging_text
 					bot.send_text_message(sender_id, response)
 
 	return "ok", 200
