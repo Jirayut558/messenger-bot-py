@@ -19,7 +19,7 @@ def wit_response(message_text):
     except Exception as e:
         pass
     return (entity,value)
-def translate(message_text):
+def translate_response(message_text):
     mean = []
 
     meaning_JSON =  dictionary.meaning(message_text)

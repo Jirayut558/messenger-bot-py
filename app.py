@@ -3,7 +3,7 @@ import string
 
 from flask import Flask,request
 from pymessenger import Bot
-from chat_ai import wit_response,translate
+from chat_ai import wit_response,translate_response
 
 app = Flask(__name__)
 
@@ -42,7 +42,7 @@ def webhook():
 
 					if "translate" in messaging_text.lower() and "no text" not in messaging_text.lower():
 						word = messaging_text.replace("translate","").translate(None,string.whitespace)
-						messaging_text = word+" : \n"+translate(word)
+						messaging_text = word+" : \n"+translate_response(word)
 					response = messaging_text
 					# Echo
 					bot.send_text_message(sender_id, response)
