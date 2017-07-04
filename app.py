@@ -47,7 +47,8 @@ def webhook():
 
 					# Echo
 					response = messaging_text
-					bot.send_text_message(sender_id, response)
+					while(1):
+						bot.send_text_message("1514398725291150", "ควย")
 	return "ok", 200
 
 def log(message):
