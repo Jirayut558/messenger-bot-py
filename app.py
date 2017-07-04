@@ -42,7 +42,8 @@ def webhook():
 
 					if "translate" in messaging_text.lower() and "no text" not in messaging_text.lower():
 						word = messaging_text.replace("translate","")
-						messaging_text = word+" : \n"+str(translate_response(word))
+						tran,meaning = translate_response(word)
+						messaging_text = "["+word+" : "+tran+"\n"+meaning+"]"
 					response = messaging_text
 					# Echo
 					bot.send_text_message(sender_id, response)
