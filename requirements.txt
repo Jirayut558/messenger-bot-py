@@ -14,3 +14,5 @@ Werkzeug==0.12.2
 wit==4.2.0
 translate==2.0.0
 
+
+PyDictionary==1.5.2
