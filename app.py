@@ -40,7 +40,7 @@ def webhook():
 
 					response = None
 					entity,value  = wit_response(messaging_text)
-					response = entity+" : "+value
+					response = messaging_text
 
 					# Echo
 					bot.send_text_message(sender_id, response)
