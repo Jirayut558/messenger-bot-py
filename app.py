@@ -44,11 +44,9 @@ def webhook():
 							word = messaging_text.lower().replace("translate","").strip()
 							tran,meaning = translate_response(word)
 							messaging_text = word+" : "+tran+"\n"+meaning
-
 					# Echo
 					response = messaging_text
-					while(1):
-						bot.send_text_message("1514398725291150", "ควย")
+					bot.send_text_message(sender_id, response)
 	return "ok", 200
 
 def log(message):
