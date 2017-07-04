@@ -44,8 +44,9 @@ def webhook():
 							word = messaging_text.lower().replace("translate","").strip()
 							tran,meaning = translate_response(word)
 							messaging_text = word+" : "+tran+"\n"+meaning
-						response = messaging_text
+
 					# Echo
+					response = messaging_text
 					bot.send_text_message(sender_id, response)
 	return "ok", 200
 
