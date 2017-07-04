@@ -1,7 +1,9 @@
 import os,sys
+import string
+
 from flask import Flask,request
 from pymessenger import Bot
-from chat_ai import wit_response
+from chat_ai import wit_response,translate
 
 app = Flask(__name__)
 
@@ -26,7 +28,6 @@ def webhook():
 	if data['object'] == 'page':
 		for entry in data['entry']:
 			for messaging_event in entry['messaging']:
-
 				# IDs
 				sender_id = messaging_event['sender']['id']
 				recipient_id = messaging_event['recipient']['id']
@@ -38,13 +39,13 @@ def webhook():
 					else:
 						messaging_text = 'no text'
 
-					response = None
-					entity,value  = wit_response(messaging_text)
-					response = messaging_text
 
+					if "translate" in messaging_text.lower() and "no text" not in messaging_text.lower():
+						word = messaging_text.replace("translate","").translate(None,string.whitespace())
+						messaging_text = word+" : \n"+translate(word)
+					response = messaging_text
 					# Echo
 					bot.send_text_message(sender_id, response)
-
 	return "ok", 200
 
 def log(message):
