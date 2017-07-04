@@ -22,8 +22,6 @@ def wit_response(message_text):
         pass
     return (entity,value)
 def translate_response(message_text):
-    message_text.translate(None,string.whitespace)
-
     meaning_JSON =  dictionary.meaning(message_text)
     meaning = json.loads(json.dumps(meaning_JSON))
     if 'none' not in str(meaning).lower():
