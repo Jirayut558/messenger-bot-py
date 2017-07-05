@@ -24,28 +24,33 @@ def wit_response(message_text):
         pass
     return (entity,value)
 def translate_response(message_text):
-    meaning_JSON =  dictionary.meaning(message_text)
-    meaning = json.loads(json.dumps(meaning_JSON))
-    if 'none' not in str(meaning).lower():
-        for key,values in meaning.items():
-            mean = key+" : "+values[0]+"\n"
+    try:
+        meaning_JSON =  dictionary.meaning(message_text)
+        meaning = json.loads(json.dumps(meaning_JSON))
         tran = translator.translate(message_text)
-        return message_text,tran,mean
-    else:
-        isvalid = False
-        isvalid,pre_word = autocomplete_word(message_text)
-        if isvalid:
-            meaning_JSON = dictionary.meaning(pre_word)
-            meaning = json.loads(json.dumps(meaning_JSON))
-            tran = translator.translate(pre_word)
-            if 'none' not in str(meaning).lower():
-                for key, values in meaning.items():
-                    mean = key + " : " + values[0] + "\n"
-                return pre_word, tran, mean
-            else:
-                return pre_word, tran, ""
+        if 'none' not in str(meaning).lower():
+            mean = ''
+            for key,values in meaning.items():
+                mean = mean + key+" : "+values[0]+"\n"
+            return message_text,tran,mean
         else:
-            return message_text,pre_word,""
+            isvalid = False
+            isvalid,pre_word = autocomplete_word(message_text)
+            if isvalid:
+                meaning_JSON = dictionary.meaning(pre_word)
+                meaning = json.loads(json.dumps(meaning_JSON))
+                tran = translator.translate(pre_word)
+                if 'none' not in str(meaning).lower():
+                    mean = ''
+                    for key, values in meaning.items():
+                        mean = mean + key + " : " + values[0] + "\n"
+                    return pre_word, tran, mean
+                else:
+                    return pre_word, tran, ""
+            else:
+                return message_text,pre_word,""
+    except:
+        return "","",""
 def autocomplete_word(text):
     try:
         autocomplete.load()
@@ -55,8 +60,6 @@ def autocomplete_word(text):
         return True,autoword.strip()
     except:
         return False,"Can not predict word"
-'''def main():
-    w,t,m = translate_response("unt")
-    print w,t,m
+''''def main():
 if __name__ == '__main__':
     main()'''
