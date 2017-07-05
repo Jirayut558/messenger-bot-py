@@ -28,7 +28,6 @@ def translate_response(message_text):
     meaning = json.loads(json.dumps(meaning_JSON))
     if 'none' not in str(meaning).lower():
         for key,values in meaning.items():
-            print values[0]
             mean = key+" : "+values[0]+"\n"
         tran = translator.translate(message_text)
         return tran,mean
