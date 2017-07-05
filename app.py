@@ -40,7 +40,7 @@ def webhook():
 					if "no text" not in messaging_text.lower():
 						if "translate." in messaging_text.lower() or "tr." in messaging_text.lower():
 							messaging_text = translate_fucntion(messaging_text)
-						elif "youtube." in messaging_text.lower() or "y." in messaging_text.lower():
+						elif "youtube." in messaging_text.lower() or "yt." in messaging_text.lower():
 							messaging_text = youtube_function(messaging_text)
 					#----- Echo -----
 					response = messaging_text
