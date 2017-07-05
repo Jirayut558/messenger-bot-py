@@ -27,8 +27,10 @@ def youtube_function(text):
             link =  'https://www.youtube.com' + vid['href']
             element = {
                 'title': vid['title'],
-                "payload": {
-                    "url": link
+                "default_action": {
+                    "type": "web_url",
+                    "url": link,
+                    "webview_height_ratio": "tall",
                 },
                 'buttons': [{
                     'type': 'web_url',
