@@ -30,13 +30,13 @@ def youtube_function(text):
                 "default_action": {
                     "type": "web_url",
                     "url": link,
-                    "webview_height_ratio": "tall",
+                    "webview_height_ratio": "full",
                 },
                 'buttons': [{
                     'type': 'web_url',
                     'title': "View",
                     'url': link,
-                    "webview_height_ratio": "full"
+                    "webview_height_ratio": "tall"
                             }],
             }
             elements.append(element)
