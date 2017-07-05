@@ -35,7 +35,13 @@ def translate_response(message_text):
         isvalid = False
         isvalid,pre_word = autocomplete_word(message_text)
         if isvalid:
-            return translate_response(pre_word)
+            meaning_JSON = dictionary.meaning(pre_word)
+            meaning = json.loads(json.dumps(pre_word))
+            if 'none' not in str(meaning).lower():
+                for key, values in meaning.items():
+                    mean = key + " : " + values[0] + "\n"
+                tran = translator.translate(pre_word)
+                return pre_word, tran, mean
         else:
             return message_text,pre_word,""
 def autocomplete_word(text):
