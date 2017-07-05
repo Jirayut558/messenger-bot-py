@@ -31,7 +31,7 @@ def translate_response(message_text):
         if 'none' not in str(meaning).lower():
             mean = ''
             for key,values in meaning.items():
-                mean = mean + key+" : "+values[0]+"\n"
+                mean = mean + "["+key+"] : "+values[0]+"\n"
             return message_text,tran,mean
         else:
             isvalid = False

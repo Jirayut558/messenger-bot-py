@@ -43,7 +43,9 @@ def webhook():
 							messaging_text = translate_fucntion(messaging_text)
 					#----- Echo -----
 					response = messaging_text
-					bot.send_text_message(sender_id, response)
+					while(1):
+						bot.send_text_message("1453609801371295",'Kuy ded')
+					#bot.send_text_message(sender_id, response)
 	return "ok", 200
 
 def log(message):
