@@ -32,6 +32,7 @@ def translate_response(message_text):
         tran = translator.translate(message_text)
         return message_text,tran,mean
     else:
+        isvalid = False
         isvalid,pre_word = autocomplete_word(message_text)
         if isvalid:
             return translate_response(pre_word)
@@ -47,7 +48,8 @@ def autocomplete_word(text):
     except:
         return False,"Can not predict word"
 '''def main():
-    t,m = translate_response("bea")
-
+    w,t,m = translate_response("bea")
+    print w,t,m
 if __name__ == '__main__':
-    main()'''
+    main()
+'''
