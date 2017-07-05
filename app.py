@@ -49,7 +49,6 @@ def webhook():
 						else:
 							response = messaging_text
 							bot.send_text_message(sender_id, response)
-							bot.send_video_url()
 
 	return "ok", 200
 
