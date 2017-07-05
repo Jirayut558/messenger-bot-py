@@ -1,5 +1,4 @@
 import os,sys
-import string
 
 from flask import Flask,request
 from pymessenger import Bot

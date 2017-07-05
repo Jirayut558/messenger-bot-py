@@ -1,4 +1,5 @@
-import urllib
+import urllib.parse
+import urllib.request
 from bs4 import BeautifulSoup
 from chat_ai import translate_response
 
@@ -10,9 +11,9 @@ def translate_fucntion(messaging_text):
 def youtube_function(text):
     word = text.lower().replace("youtube.", "").replace("y.", "").strip()
     textToSearch = word
-    query = urllib.quote(textToSearch)
+    query = urllib.parse.quote(textToSearch)
     url = "https://www.youtube.com/results?search_query=" + query
-    response = urllib.urlopen(url)
+    response = urllib.request.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html)
     link=""
