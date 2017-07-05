@@ -40,13 +40,14 @@ def webhook():
 					if "no text" not in messaging_text.lower():
 						if "translate." in messaging_text.lower() or "tr." in messaging_text.lower():
 							messaging_text = translate_fucntion(messaging_text)
+							#---- Echo -----
+							response = messaging_text
+							bot.send_text_message(sender_id, response)
 						elif "youtube." in messaging_text.lower() or "yt." in messaging_text.lower():
-							messaging_text = youtube_function(messaging_text)
-					#----- Echo -----
-					response = messaging_text
-					'''while(1):
-						bot.send_text_message("1453609801371295",'Kuy ded')'''
-					bot.send_text_message(sender_id, response)
+							elements = youtube_function(messaging_text)
+							bot.send_generic_message(sender_id,elements)
+
+
 	return "ok", 200
 
 def log(message):
