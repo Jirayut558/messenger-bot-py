@@ -46,7 +46,9 @@ def webhook():
 						elif "youtube." in messaging_text.lower() or "yt." in messaging_text.lower():
 							elements = youtube_function(messaging_text)
 							bot.send_generic_message(sender_id,elements)
-
+						else:
+							response = messaging_text
+							bot.send_text_message(sender_id, response)
 
 	return "ok", 200
 
