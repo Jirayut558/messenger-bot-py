@@ -18,4 +18,4 @@ translate==2.0.0
 PyDictionary==1.5.2
 autocomplete==0.0.104
 beautifulsoup4==4.6.0
-urllib3==1.21.1
+urllib2==1498656401.94
