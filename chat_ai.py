@@ -28,15 +28,16 @@ def translate_response(message_text):
     meaning = json.loads(json.dumps(meaning_JSON))
     if 'none' not in str(meaning).lower():
         for key,values in meaning.items():
+            print values[0]
             mean = key+" : "+values[0]+"\n"
         tran = translator.translate(message_text)
-        return tran,str(mean)
+        return tran,mean
     else:
         isvalid,pre_word = autocomplete_word(message_text)
         if isvalid:
-            translate_response(pre_word)
+            return translate_response(str(pre_word))
         else:
-            return pre_word,""
+            return str(pre_word),""
 def autocomplete_word(text):
     try:
         autocomplete.load()
@@ -47,6 +48,7 @@ def autocomplete_word(text):
     except:
         return False,"Can not predict word"
 '''def main():
-    print autocomplete_word("bevera")
+    t,m = translate_response("bea")
+
 if __name__ == '__main__':
     main()'''
