@@ -30,9 +30,9 @@ def youtube_function(text):
                 'buttons': [{
                     'type': 'web_url',
                     'title': "View",
-                    'url': link
+                    'url': link,
+                    "webview_height_ratio": "full"
                             }],
-                'image_url': link
             }
             elements.append(element)
             i+=1
