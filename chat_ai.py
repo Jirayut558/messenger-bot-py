@@ -36,7 +36,7 @@ def translate_response(message_text):
         isvalid,pre_word = autocomplete_word(message_text)
         if isvalid:
             meaning_JSON = dictionary.meaning(pre_word)
-            meaning = json.loads(json.dumps(pre_word))
+            meaning = json.loads(json.dumps(meaning_JSON))
             if 'none' not in str(meaning).lower():
                 for key, values in meaning.items():
                     mean = key + " : " + values[0] + "\n"
