@@ -30,13 +30,13 @@ def translate_response(message_text):
         for key,values in meaning.items():
             mean = key+" : "+values[0]+"\n"
         tran = translator.translate(message_text)
-        return tran,mean
+        return message_text,tran,mean
     else:
         isvalid,pre_word = autocomplete_word(message_text)
         if isvalid:
-            return translate_response(str(pre_word))
+            return translate_response(pre_word)
         else:
-            return str(pre_word),""
+            return message_text,pre_word,""
 def autocomplete_word(text):
     try:
         autocomplete.load()
