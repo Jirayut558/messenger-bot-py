@@ -1,9 +1,11 @@
 import json
-import string
+import re
+import autocomplete
 
 from wit import Wit
 from translate import Translator
 from PyDictionary import PyDictionary
+
 
 access_token = "AOOEJH2MHT3YNXUTWBWTB2KYRAYBRLHI"
 client = Wit(access_token= access_token)
@@ -30,4 +32,21 @@ def translate_response(message_text):
         tran = translator.translate(message_text)
         return tran,str(mean)
     else:
-        return message_text,""
+        isvalid,pre_word = autocomplete_word(message_text)
+        if isvalid:
+            translate_response(pre_word)
+        else:
+            return pre_word,""
+def autocomplete_word(text):
+    try:
+        autocomplete.load()
+        autoword = autocomplete.predict_currword(text)
+        autoword = re.sub(r'[^\w]', ' ', str(autoword[0]))
+        autoword = re.sub(r'\d+', ' ', autoword)
+        return True,autoword.strip()
+    except:
+        return False,"Can not predict word"
+'''def main():
+    print autocomplete_word("bevera")
+if __name__ == '__main__':
+    main()'''
