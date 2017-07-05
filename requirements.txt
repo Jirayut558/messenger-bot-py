@@ -17,3 +17,5 @@ translate==2.0.0
 
 PyDictionary==1.5.2
 autocomplete==0.0.104
+BeautifulSoup==3.2.1
+beautifulsoup4==4.6.0

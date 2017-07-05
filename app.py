@@ -3,7 +3,7 @@ import string
 
 from flask import Flask,request
 from pymessenger import Bot
-from chat_function import translate_fucntion
+from chat_function import translate_fucntion,youtube_function
 
 command_word = ['translate.','tr.']
 
@@ -41,6 +41,8 @@ def webhook():
 					if "no text" not in messaging_text.lower():
 						if "translate." in messaging_text.lower() or "tr." in messaging_text.lower():
 							messaging_text = translate_fucntion(messaging_text)
+						elif "youtube." in messaging_text.lower() or "y." in messaging_text.lower():
+							messaging_text = youtube_function(messaging_text)
 					#----- Echo -----
 					response = messaging_text
 					'''while(1):
