@@ -1,5 +1,4 @@
 import urllib
-import urllib2
 from bs4 import BeautifulSoup
 from chat_ai import translate_response
 
@@ -13,7 +12,7 @@ def youtube_function(text):
     textToSearch = word
     query = urllib.quote(textToSearch)
     url = "https://www.youtube.com/results?search_query=" + query
-    response = urllib2.urlopen(url)
+    response = urllib.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html)
     link=""
@@ -21,3 +20,7 @@ def youtube_function(text):
         if link == "":
             link =  'https://www.youtube.com' + vid['href']
     return link
+'''def main():
+    print youtube_function("Hello")
+if __name__ == '__main__':
+    main()'''
