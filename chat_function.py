@@ -38,11 +38,10 @@ def youtube_function(text):
                     'title': "View",
                     'url': link,
                     "webview_height_ratio": "full"
-                            }],
+                            }]
             }
             elements.append(element)
             i+=1
-
     return elements
 '''def main():
     print youtube_function("Hello")
