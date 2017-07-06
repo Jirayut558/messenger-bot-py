@@ -23,15 +23,13 @@ def youtube_function(text):
     elements = []
     i = 0
     for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
-        if i <= 5:
+        if i <= 4:
             link =  'https://www.youtube.com' + vid['href']
             element = {
                 'title': vid['title'],
                 "default_action": {
                     "type": "web_url",
                     "url": link,
-                    "webview_height_ratio": "full",
-                    "payload":{"url":link}
                 },
                 'buttons': [{
                     'type': 'web_url',
