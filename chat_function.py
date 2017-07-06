@@ -32,7 +32,7 @@ def youtube_function(text):
                     "webview_height_ratio": "full",
                 },
                 "payload": {
-                    "url": "https://petersapparel.com/bin/clip.mp4"
+                    "url": link
                 }
             }
             elements.append(element)
