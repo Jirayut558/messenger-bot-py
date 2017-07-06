@@ -30,9 +30,6 @@ def youtube_function(text):
                     "type": "web_url",
                     "url": link,
                     "webview_height_ratio": "full",
-                },
-                "payload": {
-                    "url": link
                 }
             }
             elements.append(element)
