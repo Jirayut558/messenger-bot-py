@@ -19,6 +19,7 @@ def youtube_function(text):
     #response = urllib.urlopen(url)
     html = response.read()
     soup = BeautifulSoup(html)
+
     elements = []
     i = 0
     for vid in soup.findAll(attrs={'class':'yt-uix-tile-link'}):
@@ -30,7 +31,14 @@ def youtube_function(text):
                     "type": "web_url",
                     "url": link,
                     "webview_height_ratio": "full",
-                }
+                    "payload":{"url":link}
+                },
+                'buttons': [{
+                    'type': 'web_url',
+                    'title': "View",
+                    'url': link,
+                    "webview_height_ratio": "full"
+                            }],
             }
             elements.append(element)
             i+=1
