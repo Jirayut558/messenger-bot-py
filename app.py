@@ -40,7 +40,7 @@ def webhook():
 					if "no text" not in messaging_text.lower():
 						res = bot_response(messaging_text)
 						response = messaging_text
-						bot.send_text_message(sender_id, response)
+						bot.send_text_message(sender_id, res)
 	return "ok", 200
 
 def log(message):
@@ -48,7 +48,7 @@ def log(message):
     sys.stdout.flush()
 
 def bot_response(inputtext):
-	url = 'http://localhost:9090/chat?m='+inputtext
+	url = 'http://ping.aiya.ai:9090/chat?m='+inputtext
 	response = requests.get(url)
 	return response.text
 if __name__ == '__main__':
