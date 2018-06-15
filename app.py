@@ -48,7 +48,7 @@ def log(message):
     sys.stdout.flush()
 
 def bot_response(inputtext):
-	url = 'http://ping.aiya.ai:9090/chat?m='+inputtext
+	url = 'http://ping.aiya.ai:5004/chat?m='+inputtext
 	response = requests.get(url)
 	return response.text
 if __name__ == '__main__':
