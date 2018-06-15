@@ -1,8 +1,8 @@
 import os,sys
-
+import json
 from flask import Flask,request
 from pymessenger import Bot
-from chat_function import translate_fucntion,youtube_function
+import requests
 
 command_word = ['translate.','tr.']
 
@@ -38,23 +38,18 @@ def webhook():
 						messaging_text = 'no text'
 					#----- Function Command -----
 					if "no text" not in messaging_text.lower():
-						if "translate." in messaging_text.lower() or "tr." in messaging_text.lower():
-							messaging_text = translate_fucntion(messaging_text)
-							#---- Echo -----
-							response = messaging_text
-							bot.send_text_message(sender_id, response)
-						elif "youtube." in messaging_text.lower() or "yt." in messaging_text.lower():
-							elements = youtube_function(messaging_text)
-							bot.send_generic_message(sender_id,elements)
-						else:
-							response = messaging_text
-							bot.send_text_message(sender_id, response)
-
+						res = bot_response(messaging_text)
+						response = messaging_text
+						bot.send_text_message(sender_id, response)
 	return "ok", 200
 
 def log(message):
     print(message)
     sys.stdout.flush()
 
+def bot_response(inputtext):
+	url = 'http://localhost:9090/chat?m='+inputtext
+	response = requests.get(url)
+	return response.text
 if __name__ == '__main__':
     app.run(debug  = True,port = 80)

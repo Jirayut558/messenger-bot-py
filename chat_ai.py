@@ -5,7 +5,7 @@ import autocomplete
 from wit import Wit
 from translate import Translator
 from PyDictionary import PyDictionary
-
+import requests
 
 access_token = "AOOEJH2MHT3YNXUTWBWTB2KYRAYBRLHI"
 client = Wit(access_token= access_token)
@@ -60,6 +60,9 @@ def autocomplete_word(text):
         return True,autoword.strip()
     except:
         return False,"Can not predict word"
-''''def main():
+
 if __name__ == '__main__':
-    main()'''
+    headers = {'content-type': 'application/json'}
+    url = 'http://localhost:9090/chat?m=' + "AI คืออะไร"
+    response = requests.post(url, headers=headers)
+    print(response)
