@@ -3,6 +3,7 @@ import json
 from flask import Flask,request
 from pymessenger import Bot
 import requests
+import sheet
 
 command_word = ['translate.','tr.']
 
@@ -39,7 +40,7 @@ def webhook():
 					#----- Function Command -----
 					if "no text" not in messaging_text.lower():
 						res = bot_response(messaging_text)
-						response = messaging_text
+						sheet.write_sheet_data(messaging_text)
 						bot.send_text_message(sender_id, res)
 	return "ok", 200
 
